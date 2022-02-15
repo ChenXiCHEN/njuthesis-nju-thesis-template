@@ -61,25 +61,25 @@
 
 
 % 论文作者姓名
-\author{作者}
+\author{陈晨曦}
 % 论文作者联系电话
 \telphone{xxxx}
 % 论文作者电子邮件地址
 \email{sample@smail.nju.edu.cn}
 % 论文作者学生证号
-\studentnum{xxxxxxx}
+\studentnum{MF1933004}
 % 论文作者入学年份（年级）
-\grade{2012}
+\grade{2019}
 % 论文作者毕业年份（届）, 出版授权书的学位年度
-\graduateyear{20xx}
+\graduateyear{2022}
 % 导师姓名职称
-\supervisor{某~~教授}
+\supervisor{叶保留教授}
 % 导师的联系电话
 \supervisortelphone{}
 % 论文作者的学科与专业方向
-\major{计算机科学与技术}
+\major{计算机技术}
 % 论文作者的研究方向
-\researchfield{分布式计算}
+\researchfield{联邦学习}
 % 论文作者所在院系的中文名称
 \department{计算机科学与技术系}
 % 论文作者所在学校或机构的名称。此属性可选，默认值为``南京大学''。
@@ -98,9 +98,9 @@
 % 论文的英文标题，不可换行
 \englishtitle{\LaTeX \;  NJU thesis template }
 % 论文作者姓名的拼音
-\englishauthor{Author}
+\englishauthor{Chenxi Chen}
 % 导师姓名职称的英文
-\englishsupervisor{ Professor}
+\englishsupervisor{ Professor Baoliu Ye}
 % 论文作者学科与专业的英文名
 \englishmajor{Computer Science and Technology}
 % 论文作者所在院系的英文名称
@@ -169,12 +169,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 论文的英文摘要
 \begin{englishabstract}
-\lipsum[2]
-
+%\lipsum[2]
+\textcolor{red}{As a new machine learning paradigm, federated learning uses distributed edge devices to train the model without exposing privacy data, providing thorough protection for user privacy. However, federated learning faces severe communication challenges due to frequent and massive model parameter updates. Moreover, its training delay suffers from the heterogeneity of edge devices. 
+Federated learning places the majority of the deep learning (DL) training tasks on the edge devices with heterogeneous computation and communication abilities, leading to tremendous training delay. And the intense exchanges of heavy model parameters severely exacerbate this problem. DL models' layered structure allows a device to partition and offload part of the model training to the server, which reduces the size of transmitted data and computation amount of devices. This paper proposes a method based on the model partition, which speeds up training by reducing the high communication overhead and mitigating the heterogeneous problem of federated learning in the edge environment. We model the training process of a partitioned model in the wireless network, construct an optimization problem that minimizes the training through adjustment of partition and resource allocation strategies. And we design an polynomial algorithm that finds a sub-optimal to the problem by dividing it into two sub-problems and solving them using polynomial algorithms. Extensive simulation results verify that our algorithm can effectively reduce the training delay compared to existing solutions.}
 %Rate adaptation can be implemented by adjusting the number of subflows on each path.
 
 % 英文关键词。关键词之间用英文半角逗号隔开，末尾无符号。
-\englishkeywords{keyword1\quad keyword2}
+\englishkeywords{federated learning\quad model partition}
 \end{englishabstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -210,9 +211,17 @@
 % 学位论文的正文应以《绪论》作为第一章
 \chapter{绪论}\label{chapter_introduction}
 \section{研究背景}
-使用.bib文件管理参考文献引用，引用示例：\cite{BHR12}.\par
-\lipsum[1]
+%使用.bib文件管理参考文献引用，引用示例：\cite{BHR12}.\par
+%\lipsum[1]
+基于神经网路的深度学习在人工智能的各种领域，如图像识别、语音识别和自然语言处理，中取得了前所未有的精度。深度学习技术也因此被广泛应用于现实生活场景，从根本上改变了人们的生活方式。主流的深度学习模型训练框架都是基于云的，这类框架需要首先将用户产生的海量原始数据收集到云中心，随后集群使用收集来的数据训练深度学习模型。然而，这样的训练方式暴露了一些缺点。一是隐私问题。基于云的训练矿建允许服务器直接访问用户的数据，这威胁到用户的隐私安全。随着网络的普及，越来越多的人意识到保护网络隐私的重要性，关于网络隐私保护的立法也在不断完善，例如：欧盟通用数据保护条例 (GDPR)\cite{GDPR}、《中华人民共和国网络安全法》\cite{cybersecurity}、《中华人民共和国民法通则》\ cite{generalprinciple} 限制了对用户敏感数据的使用。
 
+其次，随着物联网的发展，越来越多的联网设备——智能手机、摄像机和智能传感器等被生产和使用，人们平均每天产生的数据也在急剧增长。根据思科的2020年度互联网报告\cite{ciscoannual}，网络设备数量将从 2018 年的 184 亿台增加到 2023 年的 293 亿台。存储如此规模的数据势必会给云中心带来巨大的存储压力。
+
+\textcolor{red}{为了解决上述问题，一种新的深度学习训练框架——联邦学习\cite{DBLP:conf/aistats/McMahanMRHA17} 被提出。在联邦学习中，参与者（参与训练的最终用户）使用他们的数据合作训练联邦学习服务器所需的深度学习模型，然后将他们的模型更新而不是原始数据上传到服务器进行聚合。这些步骤重复多次，直到达到所需的精度。这种训练方式可以防止服务器直接访问用户的敏感数据；因此，用户隐私受到保护。并且服务器不需要存储所有的训练数据，可以节省相当多的存储空间。此外，由于计算能力以惊人的速度增长的无数终端设备的杠杆作用，联邦学习在大规模并行计算中具有巨大的潜力。}
+
+\textcolor{red}{尽管联邦学习相对于基于云的训练方法具有优势，但在实践中的部署方面面临着一些挑战。主要挑战之一是通信开销。在联邦学习中训练 DL 模型涉及数百甚至数千轮模型交换，而如今的 DL 模型往往具有巨大的参数大小——数百兆字节或更多。因此，使用联邦学习来训练 DL 模型需要大量的数据传输。计算设备的异构性带来了另一个挑战。联邦学习采用批量同步并行（BSP）聚合，即在每一轮训练中，服务器在所有设备完成计算和上传结果后聚合更新。因为联邦学习中设备的计算和通信能力有很大差异，但是这些设备的计算量和通信量是相同的。所以在每一轮中，完成任务的最快设备必须等待最慢的设备。上述两个挑战都严重减缓了联邦学习的训练。}
+
+\textcolor{red}{这些年来已经提出了应对这些挑战的研究。处理高通信开销的主流方法是压缩\cite{DBLP:journals/corr/KonecnyMYRSB16}\cite{DBLP:conf/iclr/LinHM0D18}\cite{DBLP:conf/icml/TangYLZL19}\cite{DBLP:conf/ nips/VogelsKJ19}\cite{DBLP:journals/corr/IandolaMAHDK16}\cite{DBLP:conf/iclr/PolinoPA18}，它使用量化、稀疏化或修剪来减小模型或更新的大小。然而，由于压缩过程中的信息丢失，这种压缩方法会降低模型的精度。通常，模型在压缩后需要进行更多轮训练才能达到与压缩前模型相同的精度，这最终会增加整体训练时间。异步并行 (ASP) 聚合\cite{DBLP:conf/hotos/CiparHKLGGKX13}，其中服务器会在每次更新时立即聚合，以及过时的同步并行 (SSP)\cite{DBLP:conf/cloud/HarlapCDWGGGX16}， BSP 和 ASP 的折衷方案，都可以用来解决异构问题。然而，使用 ASP 或 SSP 模型收敛会恶化，这会导致收敛速度慢和模型精度低。此外，压缩和 ASP 聚合都无法应对上述挑战。}
 \section{章节}\label{subsec:mptcp_conges}
 \lipsum[1]
 
@@ -300,7 +309,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 致谢，应放在《结论》之后
+% 致谢，应放在《结论》之后好的
 \begin{acknowledgement}
 %thanks
 \lipsum[1]
